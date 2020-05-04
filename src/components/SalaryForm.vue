@@ -1,5 +1,5 @@
 <template>
-  <v-card flat tile>
+  <v-card class="pa-4" flat tile>
     <v-text-field
       :label="prompt"
       type="number"
@@ -16,17 +16,15 @@
 
 <script lang="ts">
 import Vuetify from "vuetify";
-import { Component, Vue } from "vue-property-decorator";
+import {Component, Prop, Vue} from "vue-property-decorator";
 
-const SalaryFormProps = Vue.extend({
-  props: {
-    prompt: String
-  }
-});
 
 @Component
-export default class SalaryForm extends SalaryFormProps {
+export default class SalaryForm extends Vue {
   vuetify = new Vuetify();
+
+  @Prop({required:true})
+  prompt!:string;
 
   salary = -1;
 

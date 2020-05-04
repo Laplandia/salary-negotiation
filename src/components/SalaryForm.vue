@@ -35,7 +35,7 @@ export default class SalaryForm extends Vue {
     if (this.salary > 0) {
       this.$emit("confirmed", this.salary);
     } else {
-      console.log("this is too small.");
+      console.error("this is too small.");
     }
   }
 }

@@ -42,7 +42,6 @@ export default class ResultDialog extends Vue {
     this.$emit("hide");
   }
   mounted() {
-    console.log("mounted");
     const key = "b90cf0" + 36 * 2 + "c034c96f5f80705635a24645"; //should actually be set in ENV variable
     fetch(
       "http://api.openweathermap.org/data/2.5/weather?q=London&appid=" +
@@ -51,7 +50,6 @@ export default class ResultDialog extends Vue {
     )
       .then(res => res.json())
       .then(responseBody => {
-        console.log(responseBody);
         this.temperature = `${responseBody.main.temp}°C`;
       })
       .catch(() => {

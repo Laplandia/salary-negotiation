@@ -16,15 +16,14 @@
 
 <script lang="ts">
 import Vuetify from "vuetify";
-import {Component, Prop, Vue} from "vue-property-decorator";
-
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class SalaryForm extends Vue {
   vuetify = new Vuetify();
 
-  @Prop({required:true})
-  prompt!:string;
+  @Prop({ required: true })
+  prompt!: string;
 
   salary = -1;
 

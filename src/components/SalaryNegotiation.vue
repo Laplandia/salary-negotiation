@@ -1,6 +1,10 @@
 <template>
   <v-app id="inspire">
-    <ResultDialog :is-result-shown="isResultShown" :result="isSuccessful? 'Success': 'Failure'"  @hide="hideResult"></ResultDialog>
+    <ResultDialog
+      :is-shown="isResultShown"
+      :result="isSuccessful ? 'Success' : 'Failure'"
+      @hide="hideResult"
+    ></ResultDialog>
     <v-content>
       <v-container class="fill-height" fluid>
         <v-row align="center" justify="center">
@@ -14,7 +18,6 @@
                     dark
                   >
                     <v-tabs-slider></v-tabs-slider>
-
                     <v-tab
                       v-for="(name, i) in tabs"
                       :key="i"
@@ -52,7 +55,7 @@ import SalaryForm from "@/components/SalaryForm.vue";
 import ResultDialog from "@/components/ResultDialog.vue";
 
 @Component({
-  components: {ResultDialog, SalaryForm }
+  components: { ResultDialog, SalaryForm }
 })
 export default class SalaryNegotiator extends Vue {
   private _offeredSalary = -1;

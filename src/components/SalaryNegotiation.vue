@@ -4,26 +4,16 @@
       v-model="isResultShown"
       width="500"
     >
-      <template v-slot:activator="{ on }">
-        <v-btn
-          color="red lighten-2"
-          dark
-          v-on="on"
-        >
-          Click Me
-        </v-btn>
-      </template>
-
       <v-card>
         <v-card-title
           class="headline grey lighten-2"
           primary-title
         >
-          Privacy Policy
+          Negotiation Result
         </v-card-title>
 
         <v-card-text>
-          {{this.isSuccessful ? 'Win': 'Fail'}}
+          {{this.isSuccessful ? 'Success!': 'Failure!'}}
         </v-card-text>
 
         <v-divider></v-divider>

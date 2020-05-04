@@ -37,7 +37,6 @@ export default class SalaryForm extends SalaryFormProps {
   submitSalary(): void {
     if (this.salary > 0) {
       this.$emit("confirmed", this.salary);
-      console.log("emitted!");
     } else {
       console.log("this is too small.");
     }

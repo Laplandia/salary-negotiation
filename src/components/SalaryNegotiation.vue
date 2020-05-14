@@ -58,31 +58,31 @@ import ResultDialog from "@/components/ResultDialog.vue";
   components: { ResultDialog, SalaryForm }
 })
 export default class SalaryNegotiator extends Vue {
-  private _offeredSalary = -1;
-  private _demandedSalary = -1;
-  private isSuccessful = false;
+  offeredSalary = 0;
+  demandedSalary = 0;
+  isSuccessful = false;
   isResultShown = false;
 
   vuetify = new Vuetify();
   tabs = ["Employer", "Employee"];
 
   setOfferedSalary(salary: number): void {
-    this._offeredSalary = salary;
+    this.offeredSalary = salary;
     this.showResult();
   }
 
   setDemandedSalary(salary: number): void {
-    this._demandedSalary = salary;
+    this.demandedSalary = salary;
     this.showResult();
   }
 
   showResult(): void {
-    if (!(this._offeredSalary > 0 && this._demandedSalary > 0)) {
+    if (!(this.offeredSalary > 0 && this.demandedSalary > 0)) {
       console.error("salaries not set");
       return;
     }
 
-    this.isSuccessful = this._offeredSalary >= this._demandedSalary;
+    this.isSuccessful = this.offeredSalary >= this.demandedSalary;
     this.isResultShown = true;
   }
 

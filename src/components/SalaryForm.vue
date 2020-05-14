@@ -1,5 +1,7 @@
 <template>
   <v-card class="pa-4" flat tile>
+    <v-card-subtitle>Current {{prompt.toLowerCase()}} is: {{confirmedSalary}}</v-card-subtitle>
+
     <v-text-field
       :label="prompt"
       type="number"
@@ -9,7 +11,7 @@
 
     <v-card-actions>
       <v-spacer />
-      <v-btn color="primary" @click="submitSalary">Confirm</v-btn>
+      <v-btn color="primary" @click="submitSalary">Update</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -25,15 +27,17 @@ export default class SalaryForm extends Vue {
   @Prop({ required: true })
   prompt!: string;
 
-  salary = -1;
+  salaryInputValue = 0;
+  confirmedSalary = this.salaryInputValue;
 
   changeValue(newSalary: number): void {
-    this.salary = newSalary;
+    this.salaryInputValue = newSalary;
   }
 
   submitSalary(): void {
-    if (this.salary > 0) {
-      this.$emit("confirmed", this.salary);
+    if (this.salaryInputValue > 0) {
+      this.confirmedSalary = this.salaryInputValue;
+      this.$emit("confirmed", this.salaryInputValue);
     } else {
       console.error("this is too small.");
     }

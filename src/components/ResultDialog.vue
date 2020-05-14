@@ -7,7 +7,6 @@
 
       <v-card-text class="mt-4">
         {{ this.result }}
-
       </v-card-text>
 
       <v-card-text>

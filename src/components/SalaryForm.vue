@@ -3,7 +3,8 @@
     <v-card-subtitle>Current {{prompt.toLowerCase()}} is: {{confirmedSalary}}</v-card-subtitle>
 
     <v-text-field
-      :label="prompt"
+      class="ma-4"
+      :label="'New ' + prompt"
       type="number"
       hide-details="auto"
       @input="changeValue"

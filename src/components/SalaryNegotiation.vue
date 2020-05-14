@@ -27,13 +27,13 @@
                     </v-tab>
                     <v-tab-item :key="0" :value="'tab-' + 0">
                       <SalaryForm
-                        prompt="Maximum salary"
+                        prompt="maximum salary"
                         @confirmed="setOfferedSalary"
                       ></SalaryForm>
                     </v-tab-item>
                     <v-tab-item :key="1" :value="'tab-' + 1">
                       <SalaryForm
-                        prompt="Minimum salary"
+                        prompt="minimum salary"
                         @confirmed="setDemandedSalary"
                       ></SalaryForm>
                     </v-tab-item>

@@ -1,7 +1,7 @@
 <template>
   <v-card class="pa-4" flat tile>
     <v-card-subtitle
-      >Current {{ prompt.toLowerCase() }} is:
+      >Current {{ prompt }} is:
       {{ confirmedSalary }}</v-card-subtitle
     >
 

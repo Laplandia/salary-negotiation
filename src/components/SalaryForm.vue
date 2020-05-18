@@ -6,16 +6,18 @@
     >
 
     <v-text-field
+      v-if="confirmedSalary === 0"
       class="ma-4"
       :label="'New ' + prompt"
       type="number"
       hide-details="auto"
       @input="changeValue"
+      @keydown.enter="submitSalary"
     ></v-text-field>
 
-    <v-card-actions>
+    <v-card-actions v-if="confirmedSalary === 0">
       <v-spacer />
-      <v-btn color="primary" @click="submitSalary">Update</v-btn>
+      <v-btn color="primary" @click="submitSalary">Set</v-btn>
     </v-card-actions>
   </v-card>
 </template>
@@ -41,7 +43,7 @@ export default class SalaryForm extends Vue {
   submitSalary(): void {
     if (this.salaryInputValue > 0) {
       this.confirmedSalary = this.salaryInputValue;
-      this.$emit("confirmed", this.salaryInputValue);
+      this.$emit("confirmed", this.confirmedSalary);
     } else {
       console.error("this is too small."); //should be handled by UI, obviously
     }

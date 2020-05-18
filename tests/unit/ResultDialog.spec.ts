@@ -19,10 +19,10 @@ describe("SalaryNegotiation.vue", () => {
   const mockRejectPromise = Promise.resolve(() =>
     Promise.reject("We are closed for lunch")
   );
-  global.fetch = jest.fn().mockImplementation(() => mockFetchPromise);
 
   beforeEach(() => {
     vuetify = new Vuetify();
+    global.fetch = jest.fn().mockImplementation(() => mockFetchPromise);
   });
 
   afterAll(() => {
@@ -41,7 +41,7 @@ describe("SalaryNegotiation.vue", () => {
   });
 
   it("shows right temperature", async () => {
-    const result = "It's hard to overstate my satisfaction.";
+    const result = `I'm making a note here: "Huge success!"`;
 
     const wrapper = mount(ResultDialog, {
       localVue,
@@ -55,8 +55,22 @@ describe("SalaryNegotiation.vue", () => {
     expect(wrapper.text()).toMatch(temperature.toString());
   });
 
-  it("handles temperature service errors", async () => {
+  it("emits hide event", async () => {
     const result = "It's hard to overstate my satisfaction.";
+
+    const wrapper = mount(ResultDialog, {
+      localVue,
+      vuetify,
+      propsData: { result, isShown: true }
+    });
+
+    wrapper.find("button").trigger("click");
+    await wrapper.vm.$nextTick();
+    expect(wrapper.emitted().hide).toBeTruthy();
+  });
+
+  it("handles temperature service errors", async () => {
+    const result = "But there's no sense crying over every mistake.";
 
     global.fetch = jest.fn().mockImplementation(() => mockRejectPromise);
 
@@ -72,19 +86,5 @@ describe("SalaryNegotiation.vue", () => {
     expect.assertions(1);
 
     expect(wrapper.text()).toMatch("error loading temperature");
-  });
-
-  it("emits hide event", async () => {
-    const result = "It's hard to overstate my satisfaction.";
-
-    const wrapper = mount(ResultDialog, {
-      localVue,
-      vuetify,
-      propsData: { result, isShown: true }
-    });
-
-    wrapper.find("button").trigger("click");
-    await wrapper.vm.$nextTick();
-    expect(wrapper.emitted().hide).toBeTruthy();
   });
 });

@@ -26,10 +26,10 @@ import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class SalaryForm extends Vue {
-  vuetify = new Vuetify();
-
   @Prop({ required: true })
   prompt!: string;
+
+  vuetify = new Vuetify();
 
   salaryInputValue = 0;
   confirmedSalary = this.salaryInputValue;
@@ -43,7 +43,7 @@ export default class SalaryForm extends Vue {
       this.confirmedSalary = this.salaryInputValue;
       this.$emit("confirmed", this.salaryInputValue);
     } else {
-      console.error("this is too small.");
+      console.error("this is too small."); //should be handled by UI, obviously
     }
   }
 }

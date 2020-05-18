@@ -33,6 +33,7 @@ export default class ResultDialog extends Vue {
   isShown!: boolean;
   @Prop({ required: true })
   result!: string;
+
   vuetify = new Vuetify();
 
   temperature = "Loading...";

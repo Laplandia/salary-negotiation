@@ -57,6 +57,7 @@ import ResultDialog from "@/components/ResultDialog.vue";
 @Component({
   components: { ResultDialog, SalaryForm }
 })
+
 export default class SalaryNegotiator extends Vue {
   offeredSalary = 0;
   demandedSalary = 0;

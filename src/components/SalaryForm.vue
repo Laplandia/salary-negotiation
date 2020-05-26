@@ -36,8 +36,8 @@ export default class SalaryForm extends Vue {
   salaryInputValue = 0;
   confirmedSalary = this.salaryInputValue;
 
-  changeValue(newSalary: number): void {
-    this.salaryInputValue = newSalary;
+  changeValue(newSalary: string): void {
+    this.salaryInputValue = Number.parseInt(newSalary);
   }
 
   submitSalary(): void {
